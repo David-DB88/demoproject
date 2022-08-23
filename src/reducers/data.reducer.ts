@@ -1,6 +1,5 @@
 import { DATA_REQUEST,
     DATA_SUCCESS,
-    DATA_FAIL,
     dataDispatchTypes,
     IContact,
     createDispatchType,
@@ -20,12 +19,7 @@ const initialDataState: dataReduserI = {
     loading: false,
 };
 
-// export type InitialStateType = typeof initialState
-// type ActionType = InferActionsTypes<typeof actions>
-// type ThunkType = BaseThunkType<ActionType | FormAction>
-
 export function dataReduser(state: dataReduserI = initialDataState, action :dispatchType): dataReduserI {
-    console.log('Action',action)
     switch (action.type) {
         case DATA_REQUEST:
             return {
@@ -58,21 +52,8 @@ export function dataReduser(state: dataReduserI = initialDataState, action :disp
                 contacts:  state?.contacts?.filter((item: IContact) => item.id !== action.payload)
             };
 
-        // case LOG_OUT:
-        //     localStorage.removeItem('authToken');
-        //     return {
-        //         ...state,
-        //         authToken: null,
-        //         isAuthencated: false,
-        //     };
-
         default:
             return state
     }
 };
 
-
-
-
-
-export type DataReducer = ReturnType<typeof dataReduser>

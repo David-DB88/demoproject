@@ -1,9 +1,7 @@
 export const DATA_REQUEST = "DATA_REQUEST"
 export const DATA_SUCCESS = "DATA_SUCCESS"
 export const DATA_FAIL = "DATA_FAIL"
-export const CREATE_REQUEST = "CREATE_REQUEST"
 export const CREATE_SUCCESS = "CREATE_SUCCESS"
-export const EDIT_REQUEST = "EDIT_REQUEST"
 export const EDIT_SUCCESS = "EDIT_SUCCESS"
 export const DELETE_SUCCESS = "DELETE_SUCCESS"
 

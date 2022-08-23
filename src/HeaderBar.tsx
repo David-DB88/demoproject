@@ -3,13 +3,12 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import {useDispatch} from "react-redux";
 import {logOutRequest} from './actions/authActions'
 
 
-const  HeaderAppBar: React.FC =(props) =>{
+const  HeaderAppBar: React.FC =() =>{
     const dispatch = useDispatch()
 
     const handleClick = ()=>{

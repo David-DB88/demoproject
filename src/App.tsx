@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import Home from "./components/Home";
 import {RootState} from './reducers/RootReducer'
 import Login from "./components/Login/Login";
 import {Switch, Route, Redirect} from "react-router";
-import {ConnectedRouter} from 'connected-react-router'
 import {BrowserRouter } from "react-router-dom";
-import {ProtectedRoute} from './ProtectedRoute'
 import HeaderAppBar from './HeaderBar'
 
 
@@ -15,13 +13,7 @@ import HeaderAppBar from './HeaderBar'
 
 
 function App() {
-    const isAuth = useSelector((state: RootState) =>state.auth.isAuthencated)
-    
-    // const location = useSelector((state: RootStore)=>state.router)
-    // const [isAuth, setIsauth]=useState(false)
-// console.log('STATE', isAuth)
-// console.log('LOCALS-STORIG', localStorage.getItem("authToken"))
-    console.log(11111111, window)
+    const authToken = useSelector((state: RootState) =>state.auth.authToken)
   return (
       <>
       <BrowserRouter>
@@ -29,7 +21,7 @@ function App() {
           <Switch>
               <Route exact path="/"
                      render={props => {
-                         if (localStorage.getItem("authToken")) {
+                         if (authToken) {
                              return <Home />;
                          } else {
                              return (
@@ -47,7 +39,7 @@ function App() {
               />
               <Route path="/login"
                   render={props => {
-                      if (!localStorage.getItem("authToken")) {
+                      if (!authToken) {
                           return <Login />;
                       } else {
                           return (

@@ -1,5 +1,5 @@
 import { LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_OUT, loginDispatchTypes, LogOutDispatchType  } from "../actions/authActionsTypes";
-import {InferThunkActionCreatorType} from "react-redux";
+
 
 
 export interface  authReduserI{
@@ -13,12 +13,8 @@ const initialAutheState: authReduserI = {
     isAuthencated: false
 };
 
-// export type InitialStateType = typeof initialState
-// type ActionType = InferActionsTypes<typeof actions>
-// type ThunkType = BaseThunkType<ActionType | FormAction>
 
 export function authReduser(state: authReduserI = initialAutheState, action :loginDispatchTypes | LogOutDispatchType): authReduserI {
-    console.log('Action',action)
     switch (action.type) {
         case LOG_IN_REQUEST:
             return {
@@ -50,11 +46,3 @@ export function authReduser(state: authReduserI = initialAutheState, action :log
 };
 
 
-
-// export const loginAction = (values: FormValues): InferThunkActionCreatorType => async (dispatch)=>{
-//
-//     dispatch({type: LOG_IN_REQUEST})
-// }
-
-
-// export type AuthReducer = ReturnType<typeof authReduser>

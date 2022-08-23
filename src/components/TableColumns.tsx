@@ -1,6 +1,4 @@
 import {MUIDataTableColumn} from "mui-datatables";
-// import Button from "@mui/material/Button";
-import { Button } from "@mui/material";
 import FormDialog from './AddEditContacts/AddEditContact'
 import AlertDialog from "./DeleteContact/DeleteContact";
 
@@ -34,6 +32,7 @@ const columns: MUIDataTableColumn[] = [
         label: "Phone",
         options: {
             sort: true,
+            print: false,
             sortThirdClickReset: true
         }
     },
@@ -41,8 +40,8 @@ const columns: MUIDataTableColumn[] = [
         name: "action",
         label: "Action",
         options: {
-            sort: true,
-            sortThirdClickReset: true,
+            sort: false,
+            print: false,
             customBodyRender: (value: any, meta ) => {
                 return (<div style={{display: 'flex'}}>
                     <FormDialog currentItem={meta?.rowData}  editMode={true} />

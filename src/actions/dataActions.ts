@@ -1,27 +1,16 @@
-import { AnyAction } from 'redux';
 import {Dispatch} from "redux";
 import {DATA_REQUEST,
     DATA_SUCCESS,
     dataDispatchTypes,
     IContactItem,
-    CREATE_REQUEST,
     CREATE_SUCCESS,
     createDispatchType,
     IEditContactItem,
     editDispatchType,
-    EDIT_REQUEST,
     EDIT_SUCCESS,
     deleteDispatchType,
     DELETE_SUCCESS} from "./dataActionsTypes";
-import {useDispatch} from "react-redux";
 
-
-
-
-export interface Idata {
-    "email": string,
-    "password": string
-}
 
 
 
@@ -40,7 +29,6 @@ export interface Idata {
          }).then((data) => {
              return data.json()
          })
-         // console.log('RESPONSE', res)
          dispatch({
              type: DATA_SUCCESS,
              payload: res
@@ -66,7 +54,6 @@ export interface Idata {
          }).then((data) => {
              return data.json()
          })
-         // console.log('RESPONSE', res)
          dispatch({
              type: CREATE_SUCCESS,
              payload: res
@@ -78,7 +65,6 @@ export interface Idata {
  }
 
 export const editContactRequest =(contact: IEditContactItem)=> async (dispatch: Dispatch<editDispatchType>)=> {
-    console.log("DISPATCH-edit",contact)
     const token = JSON.parse(localStorage.getItem("authToken") as string)
     try {
         const res = await fetch(`http://localhost:8000/contacts/${contact.id }`, {
@@ -91,7 +77,6 @@ export const editContactRequest =(contact: IEditContactItem)=> async (dispatch: 
         }).then((data) => {
             return data.json()
         })
-        // console.log('RESPONSE', res)
         dispatch({
             type: EDIT_SUCCESS,
             payload: res
@@ -104,7 +89,6 @@ export const editContactRequest =(contact: IEditContactItem)=> async (dispatch: 
 
 
 export const deleteContactRequest =(contactID: number)=> async (dispatch: Dispatch<deleteDispatchType>)=> {
-    console.log("DISPATCH-DELET",contactID)
     const token = JSON.parse(localStorage.getItem("authToken") as string)
     try {
         const res = await fetch(`http://localhost:8000/contacts/${contactID }`, {
@@ -114,15 +98,12 @@ export const deleteContactRequest =(contactID: number)=> async (dispatch: Dispat
                 'Authorization': 'Bearer ' + token,
             },
         }).then(() => {
-            console.log('RESPONSE', 'Delete successful')
-
             dispatch({
                 type: DELETE_SUCCESS,
                 payload: contactID
             })
 
         })
-        // console.log('RESPONSE', res)
 
 
     } catch (e) {

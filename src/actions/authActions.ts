@@ -1,4 +1,3 @@
-import { AnyAction } from 'redux';
 import {Dispatch} from "redux";
 import {LOG_IN_REQUEST, LOG_IN_SUCCESS, loginDispatchTypes, LogOutDispatchType, LOG_OUT} from "./authActionsTypes";
 import { createBrowserHistory } from 'history';
@@ -11,29 +10,6 @@ export interface Idata {
     "email": string,
     "password": string
 }
-
-// function logOut(path = "/") {
-//     return dispatch => {
-//         let cookieFirebase = cookie.load('HDeviceToken');
-//         if(cookieFirebase){
-//             dispatch(userActions.subscribeFirebase({firebase_token: ''})).then(()=>{
-//                 localStorage.removeItem('token');
-//                 localStorage.setItem('LoginStatus', 'false');
-//                 localStorage.removeItem('mobileModalPromo');
-//                 navigate(path)
-//                 window.location.reload();
-//             })
-//         }
-//         else{
-//             localStorage.removeItem('token');
-//             localStorage.removeItem('mobileModalPromo');
-//             localStorage.setItem('LoginStatus', 'false');
-//             navigate(path)
-//             window.location.reload();
-//         }
-//
-//     }
-// }
 
  export const loginRequest =(data: Idata)=> async (dispatch: Dispatch<loginDispatchTypes>)=>{
      try{
@@ -49,7 +25,6 @@ export interface Idata {
          }).then((data)=>{
              return data.json()
          })
-console.log('RESPONSE', res)
          dispatch({
              type: LOG_IN_SUCCESS,
              payload: res
@@ -70,25 +45,3 @@ export const logOutRequest =()=> async (dispatch: Dispatch<LogOutDispatchType>)=
     }
 }
 
-
-// function requestlogin( url, user ) {
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: authHeader(),
-//         body: JSON.stringify(user)
-//     };
-//     return fetch(`${apiUrl}${url}`, requestOptions)
-//         .then(handleResponse)
-//         .then(user => {
-//             if (user.token ) {
-//                 localStorage.setItem('LoginStatus', "true");
-//                 localStorage.setItem('token', JSON.stringify(user.token));
-//             }
-//             return user;
-//         });
-// }
-//
-// export const authActions = {
-//     login,
-//     logOut,
-// };

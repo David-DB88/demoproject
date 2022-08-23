@@ -14,13 +14,6 @@ import React from "react";
 
 const Login = () => {
     const dispatch = useDispatch()
-    // let store = useSelector((store: RootState) => {
-    //     return store;
-    // });
-    // const emailError = store?.errors?.errorMessage?.errorMessage?.email?.[0]
-    // const passError = store?.errors?.errorMessage?.errorMessage?.password?.[0]
-    // const errorMessage = store?.errors?.errorMessage?.errorMessage?.errorMessage
-    //
         const validationSchema = yup.object({
         email: yup
             .string()
@@ -39,7 +32,6 @@ const Login = () => {
 
         onSubmit: (values: Idata ) => {
             dispatch(loginRequest(values))
-            // dispatch(loginRequest(values))
         },
     });
     const { handleSubmit, handleChange, values } = formik;
@@ -54,8 +46,6 @@ const Login = () => {
                             label="Email"
                             value={values.email}
                             onChange={handleChange}
-                            // error={touched.email && Boolean(formik.errors.email?formik.errors.email:emailError)}
-                            // helperText={touched.email && formik.errors.email? formik.errors.email:emailError }
                         />
                         <TextField
                             id="password"
@@ -64,8 +54,6 @@ const Login = () => {
                             type="password"
                             value={values.password}
                             onChange={handleChange}
-                            // error={touched.password && Boolean(formik.errors.password? formik.errors.password: errorMessage?errorMessage:passError)}
-                            // helperText={touched.password && formik.errors.password? formik.errors.password: errorMessage?errorMessage:passError}
                         />
 
                         <Button variant="contained" type="submit">Sign In</Button>

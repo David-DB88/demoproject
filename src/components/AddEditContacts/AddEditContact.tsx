@@ -1,10 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import FormValues from './FormValues';
 
@@ -21,7 +18,7 @@ export default function FormDialog({editMode, currentItem}: any) {
 
     return (
         <div>
-            <Button variant="contained" color="success" size='small' onClick={handleClickOpen}>
+            <Button className='printPageButton' variant="contained" color="success" size='small' onClick={handleClickOpen}>
                 {!editMode? 'ADD NEW CONTACT' : 'EDIT CONTACT'}
             </Button>
             <Dialog open={open} onClose={handleClose}>
