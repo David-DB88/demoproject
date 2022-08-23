@@ -7,3 +7,6 @@
 ### `npm run start:all`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### to login use this user
+email - nilson@email.com
+password - nilson
